@@ -1,6 +1,3 @@
-// UI manipulation functions
-
-// Type color mapping
 const typeColors = {
     fire: '#ff6b35',
     water: '#4ecdc4',
@@ -22,20 +19,24 @@ const typeColors = {
     steel: '#95a5a6',
 };
 
-// Create Pokémon card
 export function createPokemonCard(pokemon, isFavorite = false) {
     const card = document.createElement('div');
     card.className = `pokemon-card ${isFavorite ? 'favorite' : ''}`;
     card.dataset.id = pokemon.id;
     card.dataset.name = pokemon.name;
 
-    // Get primary type for background
     const primaryType = pokemon.types[0].type.name;
     card.style.background = `linear-gradient(135deg, ${typeColors[primaryType] || '#a4b0be'}22, ${typeColors[primaryType] || '#a4b0be'}44)`;
 
+    const capitalizedName =
+        pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
+
     card.innerHTML = `
         <div class="card-header">
-            <span class="pokemon-id">#${String(pokemon.id).padStart(3, '0')}</span>
+            <div class="card-meta">
+                <span class="pokemon-id">#${String(pokemon.id).padStart(3, '0')}</span>
+                <span class="pokemon-name">${capitalizedName}</span>
+            </div>
             <button class="favorite-btn ${isFavorite ? 'active' : ''}" data-id="${pokemon.id}">
                 ${isFavorite ? '❤️' : '🤍'}
             </button>
@@ -50,7 +51,6 @@ export function createPokemonCard(pokemon, isFavorite = false) {
     return card;
 }
 
-// Create loading spinner
 export function createLoadingSpinner() {
     return `
         <div class="loading">
@@ -60,7 +60,6 @@ export function createLoadingSpinner() {
     `;
 }
 
-// Create modal content for Pokémon details
 export function createPokemonDetail(pokemon, species, evolutionChain) {
     const stats = pokemon.stats;
     const abilities = pokemon.abilities;
@@ -102,7 +101,6 @@ export function createPokemonDetail(pokemon, species, evolutionChain) {
     `;
 }
 
-// Create evolution chain section
 function createEvolutionSection(chain) {
     const evolutions = parseEvolutionChain(chain);
 
@@ -129,7 +127,6 @@ function createEvolutionSection(chain) {
     `;
 }
 
-// Parse evolution chain data
 function parseEvolutionChain(chain) {
     const evolutions = [];
     let current = chain.chain;
@@ -139,13 +136,12 @@ function parseEvolutionChain(chain) {
             name: current.species.name,
             id: current.species.url.split('/').slice(-2, -1)[0],
         });
-        current = current.evolves_to[0]; // Only show first evolution path for simplicity
+        current = current.evolves_to[0];
     }
 
     return evolutions;
 }
 
-// Show modal
 export function showModal(content) {
     const modal = document.getElementById('modal');
     const detailContainer = document.getElementById('pokemon-detail');
@@ -153,41 +149,34 @@ export function showModal(content) {
     modal.style.display = 'block';
 }
 
-// Hide modal
 export function hideModal() {
     const modal = document.getElementById('modal');
     modal.style.display = 'none';
 }
 
-// Show loading state
 export function showLoading() {
     document.getElementById('loading').style.display = 'flex';
 }
 
-// Hide loading state
 export function hideLoading() {
     document.getElementById('loading').style.display = 'none';
 }
 
-// Update gallery with new cards
 export function updateGallery(cards) {
     const gallery = document.getElementById('gallery');
     gallery.appendChild(cards);
 }
 
-// Clear gallery
 export function clearGallery() {
     document.getElementById('gallery').innerHTML = '';
 }
 
-// Show/hide load more button
 export function toggleLoadMoreButton(show) {
     document.getElementById('load-more').style.display = show
         ? 'block'
         : 'none';
 }
 
-// Populate type filter dropdown
 export function populateTypeFilter(types) {
     const select = document.getElementById('type-filter');
     select.innerHTML = '<option value="">All Types</option>';
@@ -201,7 +190,6 @@ export function populateTypeFilter(types) {
     });
 }
 
-// Toggle theme
 export function toggleTheme() {
     const body = document.body;
     const currentTheme = body.dataset.theme;
@@ -214,7 +202,6 @@ export function toggleTheme() {
     localStorage.setItem('theme', newTheme);
 }
 
-// Load theme from localStorage
 export function loadTheme() {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {

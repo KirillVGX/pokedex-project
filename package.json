@@ -1,21 +1,21 @@
 {
-  "name": "the-vanilla-dex",
-  "version": "1.0.0",
-  "description": "A vanilla JavaScript Pokémon encyclopedia",
-  "main": "index.html",
-  "scripts": {
-    "start": "npx http-server . -p 3000 -c-1 --cors",
-    "dev": "npx http-server . -p 3000 -c-1 --cors"
-  },
-  "keywords": [
-    "pokemon",
-    "pokedex",
-    "vanilla-js"
-  ],
-  "author": "",
-  "license": "MIT",
-  "devDependencies": {
-    "http-server": "^14.1.1",
-    "prettier": "^3.8.1"
-  }
+    "name": "the-vanilla-dex",
+    "version": "1.0.0",
+    "description": "A vanilla JavaScript Pokémon encyclopedia",
+    "main": "index.html",
+    "scripts": {
+        "start": "npx http-server . -p 3000 -c-1 --cors",
+        "dev": "npx http-server . -p 3000 -c-1 --cors"
+    },
+    "keywords": [
+        "pokemon",
+        "pokedex",
+        "vanilla-js"
+    ],
+    "author": "",
+    "license": "MIT",
+    "devDependencies": {
+        "http-server": "^14.1.1",
+        "prettier": "^3.8.1"
+    }
 }
