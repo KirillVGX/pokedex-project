@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Vanilla Dex</title>
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>The Vanilla Dex</h1>
+      <div class="controls">
+        <input type="text" id="search" placeholder="Search Pokémon..." />
+        <select id="type-filter">
+          <option value="">All Types</option>
+        </select>
+        <button id="theme-toggle">🌙</button>
+      </div>
+    </header>
+
+    <main>
+      <div id="loading" class="loading">
+        <div class="spinner"></div>
+        <p>Loading Pokémon...</p>
+      </div>
+
+      <div id="gallery" class="gallery"></div>
+
+      <div id="load-more" class="load-more">
+        <button id="load-more-btn">Load More</button>
+      </div>
+    </main>
+
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div id="pokemon-detail"></div>
+      </div>
+    </div>
+
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>
